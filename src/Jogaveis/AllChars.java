@@ -2,9 +2,9 @@ package Jogaveis;
 
 import java.util.Scanner;
 
-import Cores.Cores;
 public abstract class AllChars {
 
+    //ATRIBUTOS CLASSE PAI
     static Scanner leia = new Scanner(System.in);
     private String nome;
     private int idade;
@@ -16,6 +16,7 @@ public abstract class AllChars {
     private int intelligence;
     private int level;
 
+    //CONSTRUCTOR
     public AllChars(){}
 
     public AllChars(String nome, float peso, int idade,

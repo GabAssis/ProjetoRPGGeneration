@@ -3,8 +3,7 @@ package Inimigos;
 
 public class EnemyMacaco extends Inimigos {
 
-
-
+    //CONSTRUCTOR
     public EnemyMacaco() {
         super("Macaco");
     }

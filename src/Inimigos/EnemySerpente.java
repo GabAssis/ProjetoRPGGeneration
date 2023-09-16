@@ -3,6 +3,7 @@ package Inimigos;
 
 public class EnemySerpente extends Inimigos {
 
+    //CONSTRUCTOR
     public EnemySerpente() {
         super("Serpente");
     }
