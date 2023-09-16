@@ -13,10 +13,12 @@ Projeto pessoal criado para praticar conhecimentos aprendidos durante o bloco 1 
 
 ## Screenshots
 
-Seleção da classe
+- Seleção da classe
+  
 ![App Screenshot](https://github.com/GabAssis/ProjetoRPGGeneration/assets/17239581/35831ca9-2a51-428c-a62f-26b1468f1ba6)
 
-Seleção das habilidades
+- Seleção das habilidades
+  
 ![App Screenshot](https://github.com/GabAssis/ProjetoRPGGeneration/assets/17239581/39d05084-bf1c-4927-ab12-ef5ac0e139eb)
 
 ## Possíveis melhorias futuras
