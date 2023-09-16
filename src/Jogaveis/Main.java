@@ -2,7 +2,7 @@ package Jogaveis;
 import Inimigos.Nivel;
 import java.util.Scanner;
 
-public class TESTE {
+public class Main {
 
     public static Scanner leia = new Scanner(System.in);
 

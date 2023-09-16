@@ -3,9 +3,6 @@ package Jogaveis;
 import Cores.Cores;
 import Inimigos.Inimigos;
 
-import java.awt.*;
-import java.util.Locale;
-
 public class ClasseLadrao extends AllChars implements Skills {
 
     //ATRIBUTOS
