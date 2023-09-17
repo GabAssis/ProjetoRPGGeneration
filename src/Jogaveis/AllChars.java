@@ -67,6 +67,8 @@ public abstract class AllChars {
             return "jovem";
         } else if (getIdade() > 50) {
             return "senhor";
+        }else if (getIdade() < 18 && getIdade() > 0){
+            return "pequeno";
         }
         return null;
     }
