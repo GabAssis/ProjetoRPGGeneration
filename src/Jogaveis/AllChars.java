@@ -231,28 +231,32 @@ public abstract class AllChars implements Skills{
 
     Thread falando = new Thread(() -> {
         try {
-            File arquivoDeAudio = new File("C:\\Users\\Administrator\\Documents\\Projeto RPG\\RPG\\src\\recursos\\fala.wav"); // Substitua pelo caminho da sua música de fundo
-            AudioInputStream inputStream = AudioSystem.getAudioInputStream(arquivoDeAudio);
-            Clip clip = AudioSystem.getClip();
-            clip.open(inputStream);
-            clip.start();
+            // Carrega o arquivo de áudio como um recurso da classe pai AllChars
+            InputStream inputStream = AllChars.class.getResourceAsStream("/recursos/fala.wav");
 
-            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            if (inputStream != null) {
+                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(inputStream);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioInputStream);
 
-            // Define o novo valor de ganho (volume) em decibéis (dB)
-            float novoVolumeEmDecibeis = -15.0f; // Ajuste este valor conforme necessário
+                FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
 
-            gainControl.setValue(novoVolumeEmDecibeis);
+                // Define o novo valor de ganho (volume) em decibéis (dB)
+                float novoVolumeEmDecibeis = -20.0f; // Ajuste este valor conforme necessário
 
-            // Você pode adicionar um atraso para controlar a duração do alerta sonoro
-            Thread.sleep(35000); //
+                gainControl.setValue(novoVolumeEmDecibeis);
 
-            clip.close();
+                clip.start();
 
-        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
+                Thread.sleep(35000);
+
+                clip.stop();
+                clip.close();
+            } else {
+                System.out.println("Arquivo de áudio não encontrado.");
+            }
+        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException | InterruptedException e) {
             e.printStackTrace();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
         }
     });
 
