@@ -126,9 +126,9 @@ public class ClasseMago extends AllChars implements Skills  {
 
 
     //SKILLS CLASSE
-    public double ataqueRaio() {
-        double damage = atacar() * getIntelligence() / 6;
-        return damage;
+    @Override
+    protected double usarAtaqueEspecial() {
+        return atacar() * getIntelligence() / 6;
     }
 
 
@@ -152,18 +152,7 @@ public class ClasseMago extends AllChars implements Skills  {
     }
 
 
-    @Override
-    public void opcoesLuta(double vida) {
-        System.out.printf("\n\n\n┌┌──────────────────┬───────────────┐┐\n" +
-                          "││                  │      VIDA     ││\n" +
-                          "││    1-ATAQUE      │     %.2f    ││\n" +
-                          "││                  │               ││\n" +
-                          "├│──────────────────┼───────────────│┤\n" +
-                          "││                  │               ││\n" +
-                          "││     2-DEFESA     │    3-RAIO     ││\n" +
-                          "││                  │               ││\n" +
-                          "└┘──────────────────┴───────────────┘┘\n", vida);
-    }
+
     //FIM SKILLS BASE
 
 
@@ -198,11 +187,4 @@ public class ClasseMago extends AllChars implements Skills  {
         return level;
     }
 
-    public double getVidaRestante() {
-        return vidaRestante;
-    }
-
-    public void setVidaRestante(double vidaRestante) {
-        this.vidaRestante = vidaRestante;
-    }
 }

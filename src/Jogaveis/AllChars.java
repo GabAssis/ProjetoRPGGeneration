@@ -21,6 +21,8 @@ public abstract class AllChars implements Skills{
     private int dexterity;
     private int intelligence;
     private int level;
+    private double vidaRestante = vida();
+    private String ataqueEspecial;
 
     //CONSTRUCTOR
     public AllChars(){}
