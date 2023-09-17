@@ -1,6 +1,11 @@
 package Jogaveis;
 
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Scanner;
+
 
 public abstract class AllChars {
 
@@ -72,6 +77,99 @@ public abstract class AllChars {
         }
         return null;
     }
+
+
+    //SONS
+    Thread musicaNpc = new Thread(() -> {
+        try {
+            // Carrega o arquivo de áudio como um recurso da classe pai AllChars
+            InputStream inputStream = AllChars.class.getResourceAsStream("/recursos/spooktune.wav");
+
+            if (inputStream != null) {
+                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(inputStream);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioInputStream);
+
+                FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+
+                // Define o novo valor de ganho (volume) em decibéis (dB)
+                float novoVolumeEmDecibeis = -20.0f; // Ajuste este valor conforme necessário
+
+                gainControl.setValue(novoVolumeEmDecibeis);
+
+                clip.start();
+
+                Thread.sleep(35000);
+
+                clip.stop();
+                clip.close();
+            } else {
+                System.out.println("Arquivo de áudio não encontrado.");
+            }
+        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    });
+
+    Thread falando = new Thread(() -> {
+        try {
+            File arquivoDeAudio = new File("C:\\Users\\Administrator\\Documents\\Projeto RPG\\RPG\\src\\recursos\\fala.wav"); // Substitua pelo caminho da sua música de fundo
+            AudioInputStream inputStream = AudioSystem.getAudioInputStream(arquivoDeAudio);
+            Clip clip = AudioSystem.getClip();
+            clip.open(inputStream);
+            clip.start();
+
+            FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+
+            // Define o novo valor de ganho (volume) em decibéis (dB)
+            float novoVolumeEmDecibeis = -15.0f; // Ajuste este valor conforme necessário
+
+            gainControl.setValue(novoVolumeEmDecibeis);
+
+            // Você pode adicionar um atraso para controlar a duração do alerta sonoro
+            Thread.sleep(35000); // Espera 2 segundos
+
+            clip.close();
+
+        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    });
+
+    static Thread audioGame = new Thread(() -> {
+        try {
+            // Carrega o arquivo de áudio como um recurso da classe pai AllChars
+            InputStream inputStream = AllChars.class.getResourceAsStream("/recursos/game.wav");
+
+            if (inputStream != null) {
+                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(inputStream);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioInputStream);
+
+                FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+
+                // Define o novo valor de ganho (volume) em decibéis (dB)
+                float novoVolumeEmDecibeis = -24.0f; // Ajuste este valor conforme necessário
+
+                gainControl.setValue(novoVolumeEmDecibeis);
+
+                clip.start();
+
+                Thread.sleep(1000000000);
+
+                clip.stop();
+                clip.close();
+            } else {
+                System.out.println("Arquivo de áudio não encontrado.");
+            }
+        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    });
+
+
 
 
 

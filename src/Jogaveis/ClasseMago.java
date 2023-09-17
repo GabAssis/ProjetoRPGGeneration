@@ -3,6 +3,9 @@ package Jogaveis;
 import Cores.Cores;
 import Inimigos.Inimigos;
 
+import java.util.InputMismatchException;
+
+
 public class ClasseMago extends AllChars implements Skills {
 
     //ATRIBUTOS
@@ -27,40 +30,43 @@ public class ClasseMago extends AllChars implements Skills {
         Thread.sleep(1500);
         System.out.println("...");
         Thread.sleep(1500);
-        System.out.print(Cores.ANSI_BLACK_BACKGROUND+"─────█─▄▀█──█▀▄─█─────\n"+Cores.TEXT_RESET);
+        musicaNpc.start();
+        System.out.print(Cores.ANSI_BLACK_BACKGROUND + "─────█─▄▀█──█▀▄─█─────\n" + Cores.TEXT_RESET);
         Thread.sleep(600);
-        System.out.print(Cores.ANSI_BLACK_BACKGROUND+"────▐▌──────────▐▌────\n"+Cores.TEXT_RESET);
+        System.out.print(Cores.ANSI_BLACK_BACKGROUND + "────▐▌──────────▐▌────\n" + Cores.TEXT_RESET);
         Thread.sleep(600);
-        System.out.print(Cores.ANSI_BLACK_BACKGROUND+"────█▌▀▄──▄▄──▄▀▐█────\n"+Cores.TEXT_RESET);
+        System.out.print(Cores.ANSI_BLACK_BACKGROUND + "────█▌▀▄──▄▄──▄▀▐█────\n" + Cores.TEXT_RESET);
         Thread.sleep(600);
-        System.out.print(Cores.ANSI_BLACK_BACKGROUND+"───▐██──▀▀──▀▀──██▌───\n"+Cores.TEXT_RESET);
+        System.out.print(Cores.ANSI_BLACK_BACKGROUND + "───▐██──▀▀──▀▀──██▌───\n" + Cores.TEXT_RESET);
         Thread.sleep(600);
-        System.out.print(Cores.ANSI_BLACK_BACKGROUND+"──▄████▄──▐▌──▄████▄──\n\n\n"+Cores.TEXT_RESET);
+        System.out.print(Cores.ANSI_BLACK_BACKGROUND + "──▄████▄──▐▌──▄████▄──\n\n\n" + Cores.TEXT_RESET);
         Thread.sleep(600);
-        System.out.println(Cores.ANSI_BLACK_BACKGROUND+Cores.TEXT_YELLOW_BOLD+"OLÁ "+nomeMaisculo+" O QUE FAZ SÓ, PELAS RUAS DE LOTHRIC?");
+        System.out.println(Cores.ANSI_BLACK_BACKGROUND + Cores.TEXT_YELLOW_BOLD + "OLÁ " + nomeMaisculo + " O QUE FAZ SÓ, PELAS RUAS DE LOTHRIC?");
         Thread.sleep(4000);
-        System.out.println(Cores.ANSI_BLACK_BACKGROUND+Cores.TEXT_GREEN_BOLD+nomeMaisculo+" :QUEM É VOCÊ E COMO SABE O MEU NOME ???!!!!");
+        System.out.println(Cores.ANSI_BLACK_BACKGROUND + Cores.TEXT_GREEN_BOLD + nomeMaisculo + " :QUEM É VOCÊ E COMO SABE O MEU NOME ???!!!!");
         Thread.sleep(4000);
-        System.out.println(Cores.ANSI_BLACK_BACKGROUND+Cores.TEXT_YELLOW_BOLD+"Isso não importa HAHAHAHA! Sou apenas um desconhecido com uma missão para pessoas corajosas!");
+        System.out.println(Cores.ANSI_BLACK_BACKGROUND + Cores.TEXT_YELLOW_BOLD + "Isso não importa HAHAHAHA! Sou apenas um desconhecido com uma missão para pessoas corajosas!");
         Thread.sleep(5000);
-        System.out.println(Cores.ANSI_BLACK_BACKGROUND+Cores.TEXT_GREEN_BOLD+nomeMaisculo+" :HMMM...Acredito ser a pessoa certa! O que devo fazer e o que ganharei com isso?");
+        System.out.println(Cores.ANSI_BLACK_BACKGROUND + Cores.TEXT_GREEN_BOLD + nomeMaisculo + " :HMMM...Acredito ser a pessoa certa! O que devo fazer e o que ganharei com isso?");
         Thread.sleep(5000);
-        System.out.println(Cores.ANSI_BLACK_BACKGROUND+Cores.TEXT_YELLOW_BOLD+"Uma pessoa verdadeiramente corajosa se provará apenas pela honra e não por dinheiro");
+        System.out.println(Cores.ANSI_BLACK_BACKGROUND + Cores.TEXT_YELLOW_BOLD + "Uma pessoa verdadeiramente corajosa se provará apenas pela honra e não por dinheiro");
         Thread.sleep(2500);
-        System.out.println(Cores.ANSI_BLACK_BACKGROUND+Cores.TEXT_YELLOW_BOLD+"Deverá investigar o castelo abandonado de ANOR LONDO e torcer para sair vivo! HAHAHA\n\n");
+        System.out.println(Cores.ANSI_BLACK_BACKGROUND + Cores.TEXT_YELLOW_BOLD + "Deverá investigar o castelo abandonado de ANOR LONDO e torcer para sair vivo! HAHAHA\n\n");
         Thread.sleep(3000);
-        System.out.print(Cores.ANSI_BLACK_BACKGROUND+Cores.TEXT_RED_BOLD+"─────█─▄▀█──█▀▄─█─────\n");
+        System.out.print(Cores.ANSI_BLACK_BACKGROUND + Cores.TEXT_RED_BOLD + "─────█─▄▀█──█▀▄─█─────\n");
         Thread.sleep(500);
+        falando.start();
         System.out.print("────▐▌──────────▐▌────\n");
         Thread.sleep(500);
         System.out.print("────█▌───▄▀▀▄───▐█────\n");
         Thread.sleep(500);
         System.out.print("───▐██──▀────▀──██▌───\n");
         Thread.sleep(500);
-        System.out.print("──▄████▄──▐▌──▄████▄──\n ...............ACEITE!\n"+Cores.TEXT_RESET);
+        System.out.print("──▄████▄──▐▌──▄████▄──\n ...............ACEITE!\n" + Cores.TEXT_RESET);
         Thread.sleep(6000);
-        System.out.println(Cores.ANSI_BLACK_BACKGROUND+Cores.TEXT_GREEN_BOLD+this.getNome().toUpperCase()+" :OK! OK! CALMA! Eu aceito senhor desconhecido. Irei provar o meu valor!!!"+Cores.TEXT_RESET);
+        System.out.println(Cores.ANSI_BLACK_BACKGROUND + Cores.TEXT_GREEN_BOLD + this.getNome().toUpperCase() + " :OK! OK! CALMA! Eu aceito senhor desconhecido. Irei provar o meu valor!!!" + Cores.TEXT_RESET);
         Thread.sleep(4000);
+
 
         System.out.println("\n\n\n         █▄██▄█                  █▄██▄█\n" +
                            "█▄█▄█▄█▄█▐█┼██▌█▄█▄█▄█▄██▄█▄█▄█▄█▐█┼██▌█▄█▄█▄█▄█\n" +
@@ -70,7 +76,7 @@ public class ClasseMago extends AllChars implements Skills {
                            " após aceitar o contrato do desconhecido!\n");
         caminhar();
         Thread.sleep(5000);
-        System.out.println("Após caminhar por um tempo pelos muros do castelo "+this.getNome()+" finalmente " +
+        System.out.println("Após caminhar por um tempo pelos muros do castelo " + this.getNome() + " finalmente " +
                            "encontra uma brecha pelos portões do castelo\n");
 
         System.out.println("          █▄█▄█▄█▄█           \n" +
@@ -80,30 +86,31 @@ public class ClasseMago extends AllChars implements Skills {
                            "█████████┼┼┼┼┼┼   ┼ █████████ \n");
         Thread.sleep(4000);
         System.out.println("Após ser engolido pela escuridão que o ambiente proporcionava" +
-                           " o "+senioridade()+" de "+this.getIdade()+" anos sente uma" +
+                           " o " + senioridade() + " de " + this.getIdade() + " anos sente uma" +
                            " energia estranha e quando se vira......");
         Thread.sleep(6000);
+
     }
 
     //ENTRADA USUÁRIO
     public void inputMago() {
-        while(true) {
+        while (true) {
             System.out.println("\nDigite o nome do seu personagem: ");
             String nome = leia.nextLine();
-            if(!(nome.isEmpty())) {
+            if (!(nome.isEmpty())) {
                 setNome(nome);
                 break;
-            }else{
+            } else {
                 System.out.println("O nome não pode ser vazio!");
             }
         }
-        while(true) {
+        while (true) {
             try {
                 System.out.println("Digite a idade do seu personagem:");
                 int idade = Integer.parseInt(leia.nextLine());
                 setIdade(idade);
                 break;
-            }catch (NumberFormatException f){
+            } catch (NumberFormatException f) {
                 System.out.println("\nDigite a idade novamente");
             }
         }
@@ -128,12 +135,15 @@ public class ClasseMago extends AllChars implements Skills {
         double ataqueInimigo = inimigo.atacar();
         boolean usouAPesado = false;
         boolean defendeu = false;
+
+
         // Loop que representa a batalha enquanto a vida do inimigo e a vida restante do jogador são maiores que zero
         while (vidaInimigo > 0 && vidaRestante > 0) {
             // Exibe as opções de luta
             opcoesLuta(getVidaRestante());
             System.out.println("DIGITE A OPÇÃO DESEJADA\n");
-            switch (leia.nextInt()) {
+            int escolhaMenu = leia.nextInt();
+            switch (escolhaMenu) {
                 case 1:
                     // Caso o jogador escolha atacar
                     if (vidaRestante > 0) {
@@ -149,6 +159,11 @@ public class ClasseMago extends AllChars implements Skills {
                             // Verifica se o jogador morreu
                             if (!(vidaRestante > 0)) {
                                 System.out.printf(" O inimigo te deu %.2f de dano e você morreu!", inimigo.atacar());
+                                System.out.println("───────▄▄▄▄▄▄▄────────\n" +
+                                                   "─────▄█████████▄──────\n" +
+                                                   "─────██─▀███▀─██──────\n" +
+                                                   "     ▀████▀████▀──────\n" +
+                                                   "───────██▀█▀██────────\n");
                                 break;
                             }
                             // Aguarda um tempo (simulação de ação)
@@ -159,6 +174,11 @@ public class ClasseMago extends AllChars implements Skills {
                         }
                     } else {
                         System.out.println(" Você morreu!");
+                        System.out.println("───────▄▄▄▄▄▄▄────────\n" +
+                                           "─────▄█████████▄──────\n" +
+                                           "─────██─▀███▀─██──────\n" +
+                                           "     ▀████▀████▀──────\n" +
+                                           "───────██▀█▀██────────\n");
                     }
 
                     break;
@@ -169,7 +189,7 @@ public class ClasseMago extends AllChars implements Skills {
                             if (vidaInimigo > 0) {
                                 // Aumenta a vida do jogador ao defender (simulação de defesa)
                                 vidaRestante += defender() / 2;
-                                System.out.printf(Cores.TEXT_GREEN_BOLD_BRIGHT+"Você  agora tem %.2f de vida\n"+Cores.TEXT_RESET, vidaRestante);
+                                System.out.printf(Cores.TEXT_GREEN_BOLD_BRIGHT + "Você  agora tem %.2f de vida\n" + Cores.TEXT_RESET, vidaRestante);
                                 System.out.println("         \n" +
                                                    "  ▄▀▀█▀▀▄\n" +
                                                    " ▐▌     ▐▌\n" +
@@ -185,9 +205,14 @@ public class ClasseMago extends AllChars implements Skills {
                             }
                         } else {
                             System.out.println("Você morreu!");
+                            System.out.println("───────▄▄▄▄▄▄▄────────\n" +
+                                               "─────▄█████████▄──────\n" +
+                                               "─────██─▀███▀─██──────\n" +
+                                               "     ▀████▀████▀──────\n" +
+                                               "───────██▀█▀██────────\n");
                         }
                         defendeu = true;
-                    }else{
+                    } else {
                         System.out.println("Você ja se defendeu nesta batalha!");
                     }
                     break;
@@ -198,13 +223,13 @@ public class ClasseMago extends AllChars implements Skills {
                         vidaInimigo -= ataqueRaio();
                         System.out.printf("Você deu %.2f de dano e deixou o inimigo com %.2f de vida\n", ataqueRaio(), vidaInimigo);
                         System.out.println(Cores.TEXT_BLUE_BOLD_BRIGHT + "||RAIO||" + Cores.TEXT_RESET);
-                        if(vidaRestante > 0) {
+                        if (vidaRestante > 0) {
                             if (vidaInimigo > 0) {
                                 System.out.println(" AGORA É O TURNO DO INIMIGO: \n");
                                 setVidaRestante(vidaRestante - ataqueInimigo);
                                 // Verifica se o jogador morreu
-                                if(!(vidaRestante>0)){
-                                    System.out.printf(Cores.TEXT_RED_BOLD+" O inimigo te deu %.2f de dano e você morreu!\n"+Cores.TEXT_RESET,inimigo.atacar());
+                                if (!(vidaRestante > 0)) {
+                                    System.out.printf(Cores.TEXT_RED_BOLD + " O inimigo te deu %.2f de dano e você morreu!\n" + Cores.TEXT_RESET, inimigo.atacar());
                                     System.out.println("───────▄▄▄▄▄▄▄────────\n" +
                                                        "─────▄█████████▄──────\n" +
                                                        "─────██─▀███▀─██──────\n" +
@@ -218,19 +243,24 @@ public class ClasseMago extends AllChars implements Skills {
                             } else {
                                 System.out.println(" Você matou o inimigo e ganhou o jogo!");
                             }
-                        }else{
-                            System.out.println(Cores.TEXT_RED_BOLD+" Você morreu!"+Cores.TEXT_RESET);
+                        } else {
+                            System.out.println(Cores.TEXT_RED_BOLD + " Você morreu!" + Cores.TEXT_RESET);
                         }
                         usouAPesado = true;
-                    }else{
+                    } else {
                         System.out.println("Você não pode mais usar o raio!");
                     }
                     break;
-            }
-        }
+                default:
+                    System.out.println("Opção inválida");
+                    continue;
 
+            }
+
+        }
     }
 
+    //Substituir arquivo de audio se necessário
 
 
     //SKILLS CLASSE
@@ -260,7 +290,7 @@ public class ClasseMago extends AllChars implements Skills {
     }
 
     @Override
-    public void opcoesLuta(double vida){
+    public void opcoesLuta(double vida) {
         System.out.printf("\n\n\n┌┌──────────────────┬───────────────┐┐\n" +
                           "││                  │      VIDA     ││\n" +
                           "││    1-ATAQUE      │     %.2f    ││\n" +
@@ -272,8 +302,6 @@ public class ClasseMago extends AllChars implements Skills {
                           "└┘──────────────────┴───────────────┘┘\n", vida);
     }
     //FIM SKILLS BASE
-
-
 
 
     //GET AND SET
