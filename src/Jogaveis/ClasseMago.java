@@ -6,7 +6,7 @@ import Inimigos.Inimigos;
 import java.util.InputMismatchException;
 
 
-public class ClasseMago extends AllChars implements Skills {
+public class ClasseMago extends AllChars implements Skills  {
 
     //ATRIBUTOS
     Inimigos inimigo = new Inimigos();
@@ -14,12 +14,8 @@ public class ClasseMago extends AllChars implements Skills {
 
     //CONSTRUCTOR
     public ClasseMago() {
+        super.setAtaqueEspecial("Raio");
     }
-
-    public ClasseMago(String nome, float peso, int idade, String sexo, int vitality, int resistance, int strength, int dexterity, int intelligence, int level) {
-        super(nome, peso, idade, sexo, vitality, resistance, strength, dexterity, intelligence, level);
-    }
-
 
     //SCRIPT MAGO
     public void scriptMago() throws InterruptedException {
@@ -128,140 +124,6 @@ public class ClasseMago extends AllChars implements Skills {
 
     }
 
-    //BATALHA MAGO
-    public void batalhaMago() throws InterruptedException {
-        // Obtém a vida do inimigo e seu poder de ataque
-        double vidaInimigo = inimigo.vida();
-        double ataqueInimigo = inimigo.atacar();
-        boolean usouAPesado = false;
-        boolean defendeu = false;
-
-
-        // Loop que representa a batalha enquanto a vida do inimigo e a vida restante do jogador são maiores que zero
-        while (vidaInimigo > 0 && vidaRestante > 0) {
-            // Exibe as opções de luta
-            opcoesLuta(getVidaRestante());
-            System.out.println("DIGITE A OPÇÃO DESEJADA\n");
-            int escolhaMenu = leia.nextInt();
-            switch (escolhaMenu) {
-                case 1:
-                    // Caso o jogador escolha atacar
-                    if (vidaRestante > 0) {
-                        // Reduz a vida do inimigo com um ataque
-                        vidaInimigo -= atacar();
-                        System.out.printf("Você deu %.2f de dano e deixou o inimigo com %.2f de vida\n", atacar(), vidaInimigo);
-                        System.out.println("o==[]:::::::::>");
-                        // Verifica se o inimigo ainda está vivo
-                        if (vidaInimigo > 0) {
-                            System.out.println(" AGORA É O TURNO DO INIMIGO: \n");
-                            // Reduz a vida do jogador com o ataque do inimigo
-                            setVidaRestante(vidaRestante - ataqueInimigo);
-                            // Verifica se o jogador morreu
-                            if (!(vidaRestante > 0)) {
-                                System.out.printf(" O inimigo te deu %.2f de dano e você morreu!", inimigo.atacar());
-                                System.out.println("───────▄▄▄▄▄▄▄────────\n" +
-                                                   "─────▄█████████▄──────\n" +
-                                                   "─────██─▀███▀─██──────\n" +
-                                                   "     ▀████▀████▀──────\n" +
-                                                   "───────██▀█▀██────────\n");
-                                break;
-                            }
-                            // Aguarda um tempo (simulação de ação)
-                            Thread.sleep(2000);
-                            System.out.printf(" O inimigo te deu %.2f de dano e você está com %.2f de vida", inimigo.atacar(), getVidaRestante());
-                        } else {
-                            System.out.println(" Você matou o inimigo e ganhou o jogo!");
-                        }
-                    } else {
-                        System.out.println(" Você morreu!");
-                        System.out.println("───────▄▄▄▄▄▄▄────────\n" +
-                                           "─────▄█████████▄──────\n" +
-                                           "─────██─▀███▀─██──────\n" +
-                                           "     ▀████▀████▀──────\n" +
-                                           "───────██▀█▀██────────\n");
-                    }
-
-                    break;
-                case 2:
-                    // Caso o jogador escolha defender
-                    if (!defendeu) {
-                        if (vidaRestante > 0) {
-                            if (vidaInimigo > 0) {
-                                // Aumenta a vida do jogador ao defender (simulação de defesa)
-                                vidaRestante += defender() / 2;
-                                System.out.printf(Cores.TEXT_GREEN_BOLD_BRIGHT + "Você  agora tem %.2f de vida\n" + Cores.TEXT_RESET, vidaRestante);
-                                System.out.println("         \n" +
-                                                   "  ▄▀▀█▀▀▄\n" +
-                                                   " ▐▌     ▐▌\n" +
-                                                   " ▐█▄   ▄█▌\n" +
-                                                   "  ▀██▄██▀\n");
-                                System.out.println(" AGORA É O TURNO DO INIMIGO: \n");
-                                // Reduz a vida do jogador com o ataque do inimigo
-                                setVidaRestante(vidaRestante - ataqueInimigo);
-                                Thread.sleep(2000);
-                                System.out.printf(" O inimigo te deu %.2f de dano e você está com %.2f de vida", inimigo.atacar(), getVidaRestante());
-                            } else {
-                                System.out.println("O inimigo ja esta morto");
-                            }
-                        } else {
-                            System.out.println("Você morreu!");
-                            System.out.println("───────▄▄▄▄▄▄▄────────\n" +
-                                               "─────▄█████████▄──────\n" +
-                                               "─────██─▀███▀─██──────\n" +
-                                               "     ▀████▀████▀──────\n" +
-                                               "───────██▀█▀██────────\n");
-                        }
-                        defendeu = true;
-                    } else {
-                        System.out.println("Você ja se defendeu nesta batalha!");
-                    }
-                    break;
-                case 3:
-                    // Caso o jogador escolha ataque raio
-                    if (!usouAPesado) {
-                        // Reduz a vida do inimigo com um ataque raio
-                        vidaInimigo -= ataqueRaio();
-                        System.out.printf("Você deu %.2f de dano e deixou o inimigo com %.2f de vida\n", ataqueRaio(), vidaInimigo);
-                        System.out.println(Cores.TEXT_BLUE_BOLD_BRIGHT + "||RAIO||" + Cores.TEXT_RESET);
-                        if (vidaRestante > 0) {
-                            if (vidaInimigo > 0) {
-                                System.out.println(" AGORA É O TURNO DO INIMIGO: \n");
-                                setVidaRestante(vidaRestante - ataqueInimigo);
-                                // Verifica se o jogador morreu
-                                if (!(vidaRestante > 0)) {
-                                    System.out.printf(Cores.TEXT_RED_BOLD + " O inimigo te deu %.2f de dano e você morreu!\n" + Cores.TEXT_RESET, inimigo.atacar());
-                                    System.out.println("───────▄▄▄▄▄▄▄────────\n" +
-                                                       "─────▄█████████▄──────\n" +
-                                                       "─────██─▀███▀─██──────\n" +
-                                                       "     ▀████▀████▀──────\n" +
-                                                       "───────██▀█▀██────────\n");
-                                    break;
-                                }
-                                // Aguarda um tempo (simulação de ação)
-                                Thread.sleep(2000);
-                                System.out.printf(" O inimigo te deu %.2f de dano e você está com %.2f de vida", inimigo.atacar(), getVidaRestante());
-                            } else {
-                                System.out.println(" Você matou o inimigo e ganhou o jogo!");
-                            }
-                        } else {
-                            System.out.println(Cores.TEXT_RED_BOLD + " Você morreu!" + Cores.TEXT_RESET);
-                        }
-                        usouAPesado = true;
-                    } else {
-                        System.out.println("Você não pode mais usar o raio!");
-                    }
-                    break;
-                default:
-                    System.out.println("Opção inválida");
-                    continue;
-
-            }
-
-        }
-    }
-
-    //Substituir arquivo de audio se necessário
-
 
     //SKILLS CLASSE
     public double ataqueRaio() {
@@ -288,6 +150,7 @@ public class ClasseMago extends AllChars implements Skills {
         double life = 500 + (getLevel() / 0.04) + getVitality() * 10;
         return life;
     }
+
 
     @Override
     public void opcoesLuta(double vida) {
