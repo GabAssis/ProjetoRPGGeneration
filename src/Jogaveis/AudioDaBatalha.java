@@ -36,12 +36,12 @@ public class AudioDaBatalha implements Runnable {
     }
 
     private void carregarArquivo(){
-        this.inputStream = AudioDaBatalha.class.getResourceAsStream("/recursos/game.wav");
+        this.inputStream = AudioDaBatalha.class.getResourceAsStream("/recursos/epic.wav");
     }
 
     private void abaixandoVolume(){
         FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-        float novoVolumeEmDecibeis = -24.0f; // Ajuste este valor conforme necessário
+        float novoVolumeEmDecibeis = -26.0f; // Ajuste este valor conforme necessário
         gainControl.setValue(novoVolumeEmDecibeis);
     }
     private void extrairClip() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
