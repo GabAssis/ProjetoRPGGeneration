@@ -5,10 +5,12 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Scanner;
+import java.util.concurrent.Executors;
+
 import Cores.Cores;
 import Inimigos.Inimigos;
 
-public abstract class AllChars implements Skills{
+public abstract class AllChars implements Skills {
 
     //ATRIBUTOS CLASSE PAI
     static Scanner leia = new Scanner(System.in);
@@ -25,7 +27,8 @@ public abstract class AllChars implements Skills{
     private String ataqueEspecial;
 
     //CONSTRUCTOR
-    public AllChars(){}
+    public AllChars() {
+    }
 
     public AllChars(String nome, float peso, int idade,
                     String sexo, int vitality, int resistance,
@@ -45,28 +48,28 @@ public abstract class AllChars implements Skills{
     //METODOS
     public void caminhar() throws InterruptedException {
         System.out.println("     ██     \n" +
-                           "  ▄▀█▄▄▄     \n" +
-                           "▄▀  █▄▄     \n" +
-                           " ▄▄▄▀  ▀▄   \n" +
-                           " ▀       ▀▀");
+                "  ▄▀█▄▄▄     \n" +
+                "▄▀  █▄▄     \n" +
+                " ▄▄▄▀  ▀▄   \n" +
+                " ▀       ▀▀");
         Thread.sleep(2000);
         System.out.println("               ██     \n" +
-                           "            ▄▀█▄▄▄     \n" +
-                           "          ▄▀  █▄▄     \n" +
-                           "           ▄▄▄▀  ▀▄   \n" +
-                           "           ▀       ▀▀");
+                "            ▄▀█▄▄▄     \n" +
+                "          ▄▀  █▄▄     \n" +
+                "           ▄▄▄▀  ▀▄   \n" +
+                "           ▀       ▀▀");
         Thread.sleep(2000);
         System.out.println("                          ██     \n" +
-                           "                       ▄▀█▄▄▄     \n" +
-                           "                     ▄▀  █▄▄     \n" +
-                           "                      ▄▄▄▀  ▀▄   \n" +
-                           "                      ▀       ▀▀");
+                "                       ▄▀█▄▄▄     \n" +
+                "                     ▄▀  █▄▄     \n" +
+                "                      ▄▄▄▀  ▀▄   \n" +
+                "                      ▀       ▀▀");
         Thread.sleep(3000);
         System.out.println("                                     ██     \n" +
-                           "                                  ▄▀█▄▄▄     \n" +
-                           "                                ▄▀  █▄▄     \n" +
-                           "                                 ▄▄▄▀  ▀▄   \n" +
-                           "                                 ▀       ▀▀");
+                "                                  ▄▀█▄▄▄     \n" +
+                "                                ▄▀  █▄▄     \n" +
+                "                                 ▄▄▄▀  ▀▄   \n" +
+                "                                 ▀       ▀▀");
 
     }
 
@@ -75,7 +78,7 @@ public abstract class AllChars implements Skills{
             return "jovem";
         } else if (getIdade() > 50) {
             return "senhor";
-        }else if (getIdade() < 18 && getIdade() > 0){
+        } else if (getIdade() < 18 && getIdade() > 0) {
             return "pequeno";
         }
         return null;
@@ -89,8 +92,8 @@ public abstract class AllChars implements Skills{
         double ataqueInimigo = inimigo.atacar();
         boolean usouAPesado = false;
         boolean defendeu = false;
-        var audioBatalha = new AudioDaBatalha();
-        audioBatalha.start();
+        var audioDaBatalha = new AudioDaBatalha();
+        Executors.newSingleThreadExecutor().execute(audioDaBatalha);
         // Loop que representa a batalha enquanto a vida do inimigo e a vida restante do jogador são maiores que zero
         while (vidaInimigo > 0 && vidaRestante > 0) {
             // Exibe as opções de luta
@@ -116,7 +119,7 @@ public abstract class AllChars implements Skills{
                             }
                             // Aguarda um tempo (simulação de ação)
                             Thread.sleep(2000);
-                            System.out.printf(" O inimigo te deu %.2f de dano e você está com %.2f de vida",ataqueInimigo , vidaRestante);
+                            System.out.printf(" O inimigo te deu %.2f de dano e você está com %.2f de vida", ataqueInimigo, vidaRestante);
                         } else {
                             System.out.println(" Você matou o inimigo e ganhou o jogo!");
                         }
@@ -132,12 +135,12 @@ public abstract class AllChars implements Skills{
                             if (vidaInimigo > 0) {
                                 // Aumenta a vida do jogador ao defender (simulação de defesa)
                                 vidaRestante += defender() / 2;
-                                System.out.printf(Cores.TEXT_GREEN_BOLD_BRIGHT+"Você  agora tem %.2f de vida\n"+Cores.TEXT_RESET, vidaRestante);
+                                System.out.printf(Cores.TEXT_GREEN_BOLD_BRIGHT + "Você  agora tem %.2f de vida\n" + Cores.TEXT_RESET, vidaRestante);
                                 System.out.println("         \n" +
-                                                   "  ▄▀▀█▀▀▄\n" +
-                                                   " ▐▌     ▐▌\n" +
-                                                   " ▐█▄   ▄█▌\n" +
-                                                   "  ▀██▄██▀\n");
+                                        "  ▄▀▀█▀▀▄\n" +
+                                        " ▐▌     ▐▌\n" +
+                                        " ▐█▄   ▄█▌\n" +
+                                        "  ▀██▄██▀\n");
                                 System.out.println(" AGORA É O TURNO DO INIMIGO: \n");
                                 // Reduz a vida do jogador com o ataque do inimigo
                                 vidaRestante -= ataqueInimigo;
@@ -150,7 +153,7 @@ public abstract class AllChars implements Skills{
                             System.out.println("Você morreu!");
                         }
                         defendeu = true;
-                    }else{
+                    } else {
                         System.out.println("Você ja se defendeu nesta batalha!");
                     }
                     break;
@@ -160,19 +163,19 @@ public abstract class AllChars implements Skills{
                         // Reduz a vida do inimigo com um ataque pesado
                         vidaInimigo -= usarAtaqueEspecial();
                         System.out.printf("Você deu %.2f de dano pesado e deixou o inimigo com %.2f de vida\n", usarAtaqueEspecial(), vidaInimigo);
-                        System.out.println(Cores.TEXT_RED_BOLD_BRIGHT + ataqueEspecial +  Cores.TEXT_RESET);
-                        if(vidaRestante > 0) {
+                        System.out.println(Cores.TEXT_RED_BOLD_BRIGHT + ataqueEspecial + Cores.TEXT_RESET);
+                        if (vidaRestante > 0) {
                             if (vidaInimigo > 0) {
                                 System.out.println(" AGORA É O TURNO DO INIMIGO: \n");
                                 vidaRestante -= ataqueInimigo;
                                 // Verifica se o jogador morreu
-                                if(!(vidaRestante>0)){
-                                    System.out.printf(Cores.TEXT_RED_BOLD+" O inimigo te deu %.2f de dano e você morreu!\n"+Cores.TEXT_RESET,ataqueInimigo);
+                                if (!(vidaRestante > 0)) {
+                                    System.out.printf(Cores.TEXT_RED_BOLD + " O inimigo te deu %.2f de dano e você morreu!\n" + Cores.TEXT_RESET, ataqueInimigo);
                                     System.out.println("───────▄▄▄▄▄▄▄────────\n" +
-                                                       "─────▄█████████▄──────\n" +
-                                                       "─────██─▀███▀─██──────\n" +
-                                                       "     ▀████▀████▀──────\n" +
-                                                       "───────██▀█▀██────────\n");
+                                            "─────▄█████████▄──────\n" +
+                                            "─────██─▀███▀─██──────\n" +
+                                            "     ▀████▀████▀──────\n" +
+                                            "───────██▀█▀██────────\n");
                                     break;
                                 }
                                 // Aguarda um tempo (simulação de ação)
@@ -181,17 +184,17 @@ public abstract class AllChars implements Skills{
                             } else {
                                 System.out.println(" Você matou o inimigo e ganhou o jogo!");
                             }
-                        }else{
-                            System.out.println(Cores.TEXT_RED_BOLD+" Você morreu!"+Cores.TEXT_RESET);
+                        } else {
+                            System.out.println(Cores.TEXT_RED_BOLD + " Você morreu!" + Cores.TEXT_RESET);
                         }
                         usouAPesado = true;
-                    }else{
+                    } else {
                         System.out.println("Você não pode mais usar o ataque pesado!");
                     }
                     break;
             }
         }
-        audioBatalha.isRunningGame = false;
+        audioDaBatalha.stopMusic();
     }
 
     protected abstract double usarAtaqueEspecial();
@@ -263,14 +266,14 @@ public abstract class AllChars implements Skills{
 
     public void opcoesLuta(double vida) {
         System.out.printf("\n\n\n┌┌──────────────────┬───────────────┐┐\n" +
-                          "││                  │      VIDA     ││\n" +
-                          "││    1-ATAQUE      │     %.2f    ││\n" +
-                          "││                  │               ││\n" +
-                          "├│──────────────────┼───────────────│┤\n" +
-                          "││                  │               ││\n" +
-                          "││     2-DEFESA     │    3-%s     ││\n" +
-                          "││                  │               ││\n" +
-                          "└┘──────────────────┴───────────────┘┘\n", vida, ataqueEspecial);
+                "││                  │      VIDA     ││\n" +
+                "││    1-ATAQUE      │     %.2f    ││\n" +
+                "││                  │               ││\n" +
+                "├│──────────────────┼───────────────│┤\n" +
+                "││                  │               ││\n" +
+                "││     2-DEFESA     │    3-%s     ││\n" +
+                "││                  │               ││\n" +
+                "└┘──────────────────┴───────────────┘┘\n", vida, ataqueEspecial);
     }
 
     //GET AND SET

@@ -4,14 +4,15 @@ import javax.sound.sampled.*;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class AudioDaBatalha extends Thread {
+public class AudioDaBatalha implements Runnable {
 
     private InputStream inputStream;
     private AudioInputStream audioInputStream;
     private Clip clip;
-    public boolean isRunningGame = true;
+    private String name = Thread.currentThread().getName();
 
     public void run() {
+
         try {
             carregarArquivo();
             if (inputStream != null) {
@@ -19,21 +20,19 @@ public class AudioDaBatalha extends Thread {
                 clip.open(audioInputStream);
                 abaixandoVolume();
                 clip.start();
-                while (true) {
-                    if(!isRunningGame) {
-                        clip.stop();
-                        clip.close();
-                     return;
-                    }
-                }
+//                System.out.println(name + " INICIANDO AUDIO DA BATALHA");
             } else {
                 System.out.println("Arquivo de áudio não encontrado.");
             }
         } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
             e.printStackTrace();
         }
+    }
 
-
+    public void stopMusic() {
+        clip.stop();
+        clip.close();
+//        System.out.println(name + " PARANDO AUDIO DA BATALHA");
     }
 
     private void carregarArquivo(){
