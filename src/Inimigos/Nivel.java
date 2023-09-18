@@ -13,13 +13,16 @@ public class Nivel {
     //MÉTODOS GERAÇÃO DE INIMIGOS
     public void gerarListaInimigos() {
         EnemySerpente serpente1 = new EnemySerpente();
-        EnemyMacaco macaco1 = new EnemyMacaco();
+        EnemyEsquilo esquilo1 = new EnemyEsquilo();
         EnemyAranha aranha1 = new EnemyAranha();
-        inimigos.addAll(Arrays.asList(serpente1, macaco1, aranha1));
+        EnemyElefante elefante1 = new EnemyElefante();
+        inimigos.addAll(Arrays.asList(serpente1, esquilo1, aranha1,elefante1));
         if (escolhaInimigo().equals(serpente1.getName())) {
             serpente1.drawSerpente();
-        } else if (escolhaInimigo().equals(macaco1.getName())) {
-            macaco1.drawMacaco();
+        } else if (escolhaInimigo().equals(esquilo1.getName())) {
+            esquilo1.drawEsquilo();
+        } else if (escolhaInimigo().equals(elefante1.getName())) {
+            elefante1.drawElefante();
         } else {
             aranha1.drawAranha();
         }

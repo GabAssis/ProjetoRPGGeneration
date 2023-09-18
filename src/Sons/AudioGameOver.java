@@ -1,11 +1,10 @@
-package Jogaveis;
+package Sons;
 
 import javax.sound.sampled.*;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class AudioDaBatalha implements Runnable {
-
+public class AudioGameOver implements Runnable{
     private InputStream inputStream;
     private AudioInputStream audioInputStream;
     private Clip clip;
@@ -36,18 +35,16 @@ public class AudioDaBatalha implements Runnable {
     }
 
     private void carregarArquivo(){
-        this.inputStream = AudioDaBatalha.class.getResourceAsStream("/recursos/epic.wav");
+        this.inputStream = AudioDaBatalha.class.getResourceAsStream("/recursos/gameover.wav");
     }
 
     private void abaixandoVolume(){
         FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-        float novoVolumeEmDecibeis = -26.0f; // Ajuste este valor conforme necessário
+        float novoVolumeEmDecibeis = -20.0f; // Ajuste este valor conforme necessário
         gainControl.setValue(novoVolumeEmDecibeis);
     }
     private void extrairClip() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         audioInputStream = AudioSystem.getAudioInputStream(inputStream);
         clip = AudioSystem.getClip();
     }
-
-
 }
