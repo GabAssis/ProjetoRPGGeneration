@@ -8,6 +8,7 @@ Projeto pessoal criado para praticar conhecimentos aprendidos durante o bloco 1 
 - Menu visual de seleção de classes do RPG
 - Menu visual de seleção de habilidades do personagem
 - Simulação de história do personagem
+- Efeitos sonoros
 
 
 ## Screenshots
