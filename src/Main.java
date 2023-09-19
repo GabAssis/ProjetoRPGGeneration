@@ -10,9 +10,6 @@ public class Main {
 
     public static Scanner leia = new Scanner(System.in);
 
-    static boolean musica = true;
-
-
     public static void main(String[] args) throws InterruptedException {
 
 
@@ -35,7 +32,6 @@ public class Main {
             }
         }
     }
-
 
     //MÉTODO MENU
     public static void classeMenu() {
